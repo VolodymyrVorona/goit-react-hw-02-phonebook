@@ -22,7 +22,7 @@ class App extends Component {
     };
 
     if (this.findTheSameName(name)) {
-      return alert('slkdjfsldkjflsl');
+      return alert(`${name} is already in contacts`);
     }
 
     this.setState(({ contacts }) => ({
