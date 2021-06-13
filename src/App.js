@@ -1,7 +1,30 @@
-import PropTypes from 'prop-types';
+import { Component } from 'react';
 
-function App() {
-  return <div className="App"></div>;
+import Form from './Form';
+
+import shortId from 'shortid';
+
+class App extends Component {
+  state = {
+    contacts: [],
+  };
+
+  onFormSubmit = ({ name, number }) => {
+    const newContact = {
+      id: shortId.generate(),
+      name,
+      number,
+    };
+
+    this.setState(({ contacts }) => ({
+      contacts: [newContact, ...contacts],
+    }));
+  };
+
+  render() {
+    console.log(this.state.contacts);
+    return <Form onSubmit={this.onFormSubmit} />;
+  }
 }
 
 export default App;
